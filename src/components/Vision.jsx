@@ -3,12 +3,12 @@ import vision from '../assets/vision.png';
 
 const Vision = () => {
   return (
-    <div className='w-full bg-white py-16 px-4'>
-      <div className='max-w-[1240px] mx-auto grid md:grid-cols-2'>
+    <div className='w-full bg-white py-16 px-4 min-h-screen' id='vision'>
+      <div className='max-w-[1240px] mx-auto grid md:grid-cols-2 h-full'>
         <img className='w-[500px] mx-auto my-4' src={vision} alt='/' />
         <div className='flex flex-col justify-center'>
-          <p className='text-[#D298D3] text-xl font-bold'>Our Vision</p>
-          <p>
+          <p className='text-[#D298D3] text-3xl font-bold'>Our Vision</p>
+          <p className='mt-10'>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum
             molestiae delectus culpa hic assumenda, voluptate reprehenderit
             dolore autem cum ullam sed odit perspiciatis. Doloribus quos velit,

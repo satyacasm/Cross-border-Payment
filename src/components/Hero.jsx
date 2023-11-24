@@ -3,7 +3,7 @@ import Typed from 'react-typed';
 
 const Hero = () => {
   return (
-    <div className='text-white bg-[url(./assets/cross-border.png)] h-screen bg-cover bg-no-repeat '>
+    <div className='text-white bg-[url(./assets/cross-border.png)] h-screen bg-cover bg-no-repeat ' id='home'>
       <div className='max-w-[800px] mt-[-96px] w-full h-screen mx-auto text-center flex flex-col justify-center'>
         <p className='text-[#D298D3] font-bold p-2 text-3xl'>
           Join us for
