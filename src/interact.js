@@ -35,8 +35,24 @@ async function transfer(to,amount){
   })
 }
 async function getAllTransactions(){
-  const getAllTransactions = await contract.getAllTransactions();
-  return getAllTransactions;
+//   const getAllTransactions = await contract.getAllTransactions();
+//   return getAllTransactions;
+  const transactions = await contract.getAllTransactions();
+ const transactionsArray = transactions.toArray();
+ const transactionsJson = transactionsArray.map((transaction) => {
+	// console.log(transaction);
+  return {
+    counter: Number(transaction[0]),
+    timestamp: Number(transaction[1]),
+    from: transaction[2],
+    to: transaction[3],
+    amount: Number(transaction[4]),
+    charges: Number(transaction[5]),
+    status: transaction[6]
+  };
+ });
+//  console.log(transactionsJson);
+ return transactionsJson;
 }
 
 async function findBalance(addr){

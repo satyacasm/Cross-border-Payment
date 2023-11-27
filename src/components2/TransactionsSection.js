@@ -1,76 +1,43 @@
 // TransactionsSection.js
-import React from "react";
+// import React from "react";
 import "./TransactionsSection.css";
+import { getAllTransactions } from "../interact";
+import React, { useState, useEffect } from 'react';
 
-const TransactionsSection = () => {
-  const transactions = [
-    {
-      counter: 1,
-      from: "Account A",
-      to: "Account B",
-      amount: 100.0,
-      charges: 5.0,
-      status: "Completed",
-    },
-    {
-      counter: 2,
-      from: "Account C",
-      to: "Account D",
-      amount: 150.0,
-      charges: 7.5,
-      status: "Pending",
-    },
+const TransactionsSection = (props) => { 
+  const [transactions, setTransactions] = useState([]);
+  const addr = props.address;
+  // console.log(addr);
+  useEffect(() => {
+    const fetchTransactions = async () => {
+      try {
+        const transactionsData = await getAllTransactions();
+        // console.log("Transactions => ", transactionsData);
+        setTransactions(transactionsData);
+      } catch (error) {
+        console.error("Error fetching transactions:", error);
+      }
+    };
 
-    {
-      counter: 2,
-      from: "Account C",
-      to: "Account D",
-      amount: 150.0,
-      charges: 7.5,
-      status: "Pending",
-    },
-    {
-      counter: 2,
-      from: "Account C",
-      to: "Account D",
-      amount: 150.0,
-      charges: 7.5,
-      status: "Pending",
-    },
-    {
-      counter: 2,
-      from: "Account C",
-      to: "Account D",
-      amount: 150.0,
-      charges: 7.5,
-      status: "Failed",
-    },
-    {
-      counter: 2,
-      from: "Account C",
-      to: "Account D",
-      amount: 150.0,
-      charges: 7.5,
-      status: "Pending",
-    },
-    {
-      counter: 2,
-      from: "Account C",
-      to: "Account D",
-      amount: 150.0,
-      charges: 7.5,
-      status: "Pending",
-    },
-  ];
+    fetchTransactions();
+  }, []); // Empty dependency array ensures the effect runs only once
+  const filteredTransactions = transactions.filter(transaction => transaction.from === addr || transaction.to === addr);
+  console.log(filteredTransactions);
+  console.log(JSON.stringify(addr))
+  console.log(JSON.stringify(transactions[0]))
+
+  // transactions.map((transaction) => (
+  //   console.log("Trans => "+transaction[0])
+  // ))
   return (
     <div className="transactions-section">
       <h2 className="transacion_heading">Previous Transactions</h2>
-      <div className="transaction-list ">
-        <table class="table table-striped table-dark">
+      <div className="transaction-list">
+        <table className="table table-striped table-dark">
           <thead>
             <tr>
               <th>Counter</th>
-              <th>From</th>
+              <th>From</th>      
               <th>To</th>
               <th>Amount</th>
               <th>Charges</th>
@@ -78,8 +45,8 @@ const TransactionsSection = () => {
             </tr>
           </thead>
           <tbody>
-            {transactions.map((transaction) => (
-              <tr key={transaction.id}>
+            { transactions.map((transaction) => (
+              <tr key={transaction.counter}>
                 <td>{transaction.counter}</td>
                 <td>{transaction.from}</td>
                 <td>{transaction.to}</td>
