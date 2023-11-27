@@ -2,8 +2,6 @@ import React from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Home from "./Pages/Home";
 import Dashboard from "./Pages/Dashboard";
-
-import React from "react";
 import Vision from "./components/Vision";
 import Cards from "./components/Cards";
 import Footer from "./components/Footer";
