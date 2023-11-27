@@ -60,3 +60,15 @@ main {
   background-color:#7E4DAC; /* Same color for both sections */
   margin-left: 200px; 
 }
+
+.dashBoard_Nav{
+  display: flex;
+  justify-content:space-between;
+}
+
+.displayAccount{
+  border: 1.5px solid white;
+  border-radius: 25px;
+  font-size: small;
+  padding: 10px;
+}

@@ -41,7 +41,10 @@ const getUserBalance = (address) => {
     <div className="dark-app">
       <Navbar />
       <main>
+        <div className="dashBoard_Nav">
         <h2 className="main_greeting">Welcome User</h2>
+        <div className="displayAccount">{defaultAddress}</div>
+        </div>
         <PaymentSection />
         <TransactionsSection />
       </main>

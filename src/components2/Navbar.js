@@ -2,6 +2,7 @@
 import React from "react";
 import "./Navbar.css";
 import image from "../images/add-money.webp";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -12,7 +13,7 @@ const Navbar = () => {
           <h3 className="logo">CrossPay</h3>
         </div>
         <ul>
-          <li>Home</li>
+          <Link to="/"><button className="homeButton">Home</button></Link>
           <li>Support</li>
         </ul>
       </nav>
