@@ -1,0 +1,25 @@
+/* PaymentSection.css and TransactionsSection.css */
+.transactions-section {
+/* background-color: #333; */
+    margin-right: 40px;
+    margin-bottom: 40px;
+    padding: 10px;
+    border-radius: 16px;
+    color:white;
+}
+
+h2 {
+    color: #faf5f5;
+}
+table{
+    width: 100%;
+}
+
+.transacion_heading{
+    color: white;
+font-size: 30px;
+}
+
+.transaction-list{
+    margin-top: 30px;
+}

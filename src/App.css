@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+
+
+main {
+  text-align: center;
+  margin-left: 250px; 
+  padding: 20px;
+  padding-bottom: 60px; 
+  box-sizing: border-box;
+  overflow: auto; 
+}
+
+.main_greeting{
+  font-size: 40px;
+}
+
+.dark-app{
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+.footer_section{
+  background-color:#7E4DAC; /* Same color for both sections */
+  margin-left: 200px; 
+}
