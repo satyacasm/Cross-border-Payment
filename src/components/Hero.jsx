@@ -1,5 +1,6 @@
 import React from 'react';
 import Typed from 'react-typed';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
@@ -23,7 +24,7 @@ const Hero = () => {
             loop
           />
         </div>
-        <button className='bg-[#D298D3]  w-[200px] rounded-md font-medium my-6 mx-auto py-3 text-black'>Start Transaction</button>
+        <Link to="/dashboard"><button className='bg-[#D298D3]  w-[200px] rounded-md font-medium my-6 mx-auto py-3 text-black'>Start Transaction</button></Link>
       </div>
     </div>
   );
