@@ -4,7 +4,7 @@ const {abi} = require("./contracts/basicABI.json");
 const provider = new ethers.BrowserProvider(window.ethereum)
 await provider.send("eth_requestAccounts",[]);
 const signer  = await provider.getSigner();
-const contract = new ethers.Contract("0xc1c23A850CF85bD3E9169c55A27C5e4614cFa767",abi,signer);
+const contract = new ethers.Contract(process.env.REACT_APP_CONTRACT_ADDRESS,abi,signer);
 async function main() {
   
   console.log("balance is "+await contract.balanceOf());
