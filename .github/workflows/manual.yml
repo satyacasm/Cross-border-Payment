@@ -20,7 +20,7 @@ jobs:
      - name: Merge changes
        run: |
          git checkout main
-         git merge upstream/main
+         git merge --allow-unrelated-histories main
      - name: Push changes
        run: |
          git push origin main
