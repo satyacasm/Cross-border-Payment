@@ -3,6 +3,7 @@ import { useState } from 'react';
 import {useNavigate} from "react-router-dom"
 import img from "../images/add-money.webp"
 import {transfer} from "../interact"
+import image from "../images/crosspay-high-resolution-logo-transparent.png";
 
 const Form = () => {
   const [amount, setAmount] = useState('');
@@ -12,7 +13,7 @@ const Form = () => {
   
   return (
     <> 
-    <h1 className='mt-4 ml-4 text-[#e3c0e3] text-3xl'>CrossPay</h1>
+    <h1 className='mt-4 ml-4 text-[#e3c0e3] text-3xl'><img src={image} width={500} height={500}></img></h1>
           <div className="flex flex-col items-center justify-center min-h-screen ">
       <div className="w-full max-w-4xl bg-white pt-0 pr-3 pl-2 pb-2 rounded-lg shadow-xl flex min-h-[500px] mb-6">
         
