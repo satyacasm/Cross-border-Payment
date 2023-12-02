@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { Link } from 'react-scroll';
+import image from "../images/crosspay-high-resolution-logo-transparent.png";
 const Navbar = () => {
   const [nav, setNav] = useState(false);
 
@@ -10,7 +11,7 @@ const Navbar = () => {
 
   return (
     <div className='flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white'>
-      <h1 className='w-full text-3xl font-bold text-[#D298D3] '>Logo</h1>
+      <h1 className='w-full text-3xl font-bold text-[#D298D3] '><img src={image} width={500} height={500}></img></h1>
       <div className='flex items-center p-2 gap-5'>
       <Link to ="home" spy={true} smooth ={true} duration={500} className='hover:text-[#D298D3]  transition-all cursor-pointer'>Home</Link>
                 <Link to ="vision" spy={true} smooth ={true} duration={500} className='hover:text-[#D298D3]  transition-all cursor-pointer'>Vision</Link>
