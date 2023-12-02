@@ -21,10 +21,10 @@ const TransactionsSection = (props) => {
 
     fetchTransactions();
   }, []); // Empty dependency array ensures the effect runs only once
-  const filteredTransactions = transactions.filter(transaction => transaction.from === addr || transaction.to === addr);
+  const filteredTransactions = transactions.filter(transaction => transaction.from.toLowerCase() === addr.toLowerCase() || transaction.to.toLowerCase() === addr.toLowerCase());
   console.log(filteredTransactions);
-  console.log(JSON.stringify(addr))
-  console.log(JSON.stringify(transactions[0]))
+  // console.log(JSON.stringify(addr))
+  // console.log(JSON.stringify(transactions[0]))
 
   // transactions.map((transaction) => (
   //   console.log("Trans => "+transaction[0])
@@ -36,7 +36,7 @@ const TransactionsSection = (props) => {
         <table className="table table-striped table-dark">
           <thead>
             <tr>
-              <th>Counter</th>
+              <th>ID</th>
               <th>From</th>      
               <th>To</th>
               <th>Amount</th>
@@ -45,7 +45,7 @@ const TransactionsSection = (props) => {
             </tr>
           </thead>
           <tbody>
-            { transactions.map((transaction) => (
+            { filteredTransactions.map((transaction) => (
               <tr key={transaction.counter}>
                 <td>{transaction.counter}</td>
                 <td>{transaction.from}</td>
