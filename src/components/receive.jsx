@@ -1,13 +1,8 @@
 import React from 'react'
-import { useState } from 'react';
 import {useNavigate} from "react-router-dom"
 import img from "../images/add-money.webp"
-import {transfer} from "../interact"
-
 const Form = () => {
-  const [amount, setAmount] = useState('');
-  const [metamaskAddress, setMetamaskAddress] = useState('');
-  const navigate = useNavigate();
+    const navigate = useNavigate();
     const handleClick = () => navigate('/dashboard');
   
   return (
@@ -34,17 +29,20 @@ const Form = () => {
             Amount
             </label>
 
-            <input  class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline placeholder-[#c6c2c2]"  id="text"  type="number"  placeholder="******" value={amount} onChange={(e) => setAmount(e.target.value)}/>
+      <input class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline placeholder-[#c6c2c2]" id="text" type="text" placeholder="******"/>  
     </div>
     <div class="mb-6">
       <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
         Metamask of Receiver
       </label>
-      <input class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline placeholder-[#c6c2c2]"  id="text"  type="text"  placeholder="******************" value={metamaskAddress}  onChange={(e) => setMetamaskAddress(e.target.value)}/>
+      <input class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline placeholder-[#c6c2c2]" id="text" type="text" placeholder="******************"/>  
     </div>
     <div className="flex flex-col items-center justify-center">
-    <button className="bg-[#bd73be] hover:bg-[#D298D3] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onClick={() => transfer( metamaskAddress,amount)}>  Send
-</button> 
+            <button
+              className="bg-[#bd73be]  hover:bg-[#D298D3]  text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              type="button"
+            >   Send
+      </button>    
       <h1 className='text-black text-bold text-md items-center justify-center mt-3  hover:text-[#D298D3]' onClick={handleClick}>Back to Dashboard</h1>
     </div>
     

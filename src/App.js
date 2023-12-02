@@ -9,6 +9,7 @@ import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import FeedbackForm from "./components/Feedback";
 import SForm from "./components/Form"
+import Receive from "./components/receive";
 // from interact.js
 import {
   main,
@@ -26,6 +27,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/form" element={<SForm />} />
+        <Route path="/receive" element={<Receive />} />
       </Routes>
     </BrowserRouter>
   );

@@ -29,7 +29,7 @@ async function withdrawal(amount){
   })
 }
 async function transfer(to,amount){
-  const transfer = await contract.transfer(to,amount);
+  const transfer = await contract.transfer(to,Number(amount));
   contract.on("Transfer",(from,to,balance)=>{
     return {from,to,balance};
   })
