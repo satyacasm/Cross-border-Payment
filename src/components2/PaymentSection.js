@@ -5,7 +5,7 @@ import add from "../images/add-money.webp";
 import send from "../images/sendmoney.avif";
 import recieve from "../images/receive-money.jpg";
 import withdraw from "../images/withdraw-removebg-preview.png";
-
+import { Link } from "react-router-dom";
 const PaymentSection = () => {
   return (
     <div className="payment-section">
@@ -15,24 +15,22 @@ const PaymentSection = () => {
           <div className="account_balance">
             <h3>Send Money</h3>
             <img src={send}></img>
-            <button>Send</button>
           </div>
           <div className="currency_conv">
             <h3>Send Money</h3>
             <img src={send}></img>
-            <button>Send</button>
           </div>
         </div>
         <div className="payment_body">
           <div>
             <h3>Send Money</h3>
             <img src={send}></img>
-            <button>Send</button>
+            <Link to ='/form'><button >Send</button></Link>
           </div>
           <div>
-            <h3>Recieve Money</h3>
+            <h3>Receive Money</h3>
             <img src={recieve}></img>
-            <button>Recieve </button>
+           <Link to ='/receive'><button >Receive</button></Link>
           </div>
         </div>
         <div className="payment_body">
