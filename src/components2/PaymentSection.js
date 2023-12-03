@@ -1,26 +1,19 @@
 // PaymentSection.js
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./PaymentSection.css";
 import add from "../images/add-money.webp";
 import send from "../images/sendmoney.avif";
 import recieve from "../images/receive-money.jpg";
 import withdraw from "../images/withdraw-removebg-preview.png";
 import { Link } from "react-router-dom";
-const PaymentSection = () => {
+
+const PaymentSection = (props) => {
+  const account_Address = props.address;
+  
   return (
     <div className="payment-section">
       <div className="payment-options">
         <div className="payment_header"></div>
-        <div className="payment_body">
-          <div className="account_balance">
-            <h3>Send Money</h3>
-            <img src={send}></img>
-          </div>
-          <div className="currency_conv">
-            <h3>Send Money</h3>
-            <img src={send}></img>
-          </div>
-        </div>
         <div className="payment_body">
           <div>
             <h3>Send Money</h3>
@@ -29,8 +22,8 @@ const PaymentSection = () => {
           </div>
           <div>
             <h3>Receive Money</h3>
-            <img src={recieve}></img>
-           <Link to ='/receive'><button >Receive</button></Link>
+            <img src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${account_Address}`}></img>
+            <div className="disp-acc">{account_Address}</div>
           </div>
         </div>
         <div className="payment_body">

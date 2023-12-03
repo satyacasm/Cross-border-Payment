@@ -45,7 +45,7 @@ const getUserBalance = (address) => {
         <h2 className="main_greeting">Welcome User</h2>
         <div className="displayAccount">{defaultAddress}</div>
         </div>
-        <PaymentSection />
+        <PaymentSection address={defaultAddress}/>
         <TransactionsSection address={defaultAddress} />
       </main>
       <div className="footer_section">
