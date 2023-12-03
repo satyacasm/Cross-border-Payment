@@ -30,12 +30,12 @@ const PaymentSection = (props) => {
           <div>
             <h3>Add Money</h3>
             <img src={add}></img>
-            <button>Add </button>
+            <Link to ='/addform'><button>Add </button></Link>
           </div>
           <div>
             <h3>Withdraw Money</h3>
             <img src={withdraw}></img>
-            <button>Withdraw </button>
+            <Link to ='/withdraw'><button>Withdraw </button></Link>
           </div>
         </div>
       </div>
