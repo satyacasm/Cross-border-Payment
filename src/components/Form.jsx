@@ -13,8 +13,16 @@ const Form = () => {
   
   return (
     <> 
-    <h1 className='mt-4 ml-4 text-[#e3c0e3] text-3xl'><img src={image} width={500} height={500}></img></h1>
+    
           <div className="flex flex-col items-center justify-center min-h-screen ">
+          <img
+          src={image}
+          width={50} 
+          height={50} 
+          className="absolute top-4 left-4 z-10"
+          alt="Logo"
+        />
+
       <div className="w-full max-w-4xl bg-white pt-0 pr-3 pl-2 pb-2 rounded-lg shadow-xl flex min-h-[500px] mb-6">
         
         {/* Left side (image) */}
