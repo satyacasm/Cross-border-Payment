@@ -21,7 +21,9 @@ const TransactionsSection = (props) => {
 
     fetchTransactions();
   }, []); // Empty dependency array ensures the effect runs only once
-  const filteredTransactions = transactions.filter(transaction => transaction.from.toLowerCase() === addr.toLowerCase() || transaction.to.toLowerCase() === addr.toLowerCase());
+  var filteredTransactions;
+  if(addr)
+  filteredTransactions = transactions.filter(transaction => transaction.from.toLowerCase() === addr.toLowerCase() || transaction.to.toLowerCase() === addr.toLowerCase());
   console.log(filteredTransactions);
   // console.log(JSON.stringify(addr))
   // console.log(JSON.stringify(transactions[0]))
@@ -29,7 +31,8 @@ const TransactionsSection = (props) => {
   // transactions.map((transaction) => (
   //   console.log("Trans => "+transaction[0])
   // ))
-  return (
+  if(addr)
+  {return (
     <div className="transactions-section">
       <h2 className="transacion_heading">Previous Transactions</h2>
       <div className="transaction-list">
@@ -59,7 +62,11 @@ const TransactionsSection = (props) => {
         </table>
       </div>
     </div>
-  );
+    );
+    }
+    else{
+      return;
+    }
 };
 
 export default TransactionsSection;

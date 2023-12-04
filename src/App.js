@@ -22,17 +22,57 @@ import {
   getAllTransactions,
   findBalance,
 } from "./interact";
+import '@rainbow-me/rainbowkit/styles.css';
+import {
+  getDefaultWallets,
+  RainbowKitProvider,
+} from '@rainbow-me/rainbowkit';
+import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+import {
+  sepolia,
+  polygon,
+  optimism,
+  arbitrum,
+  base,
+  zora,
+} from 'wagmi/chains';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { publicProvider } from 'wagmi/providers/public';
+
+const { chains, publicClient } = configureChains(
+  [sepolia , polygon, optimism, arbitrum, base, zora],
+  [
+    alchemyProvider({ apiKey: 'Ixx4JyeFTpcD2X6RN-RZJmdWkq69MvHm' }),
+    publicProvider()
+  ]
+);
+const { connectors } = getDefaultWallets({
+  appName: 'Cross Border Payment',
+  projectId: 'Ixx4JyeFTpcD2X6RN-RZJmdWkq69MvHm',
+  chains
+});
+const wagmiConfig = createConfig({
+  autoConnect: true,
+  connectors,
+  publicClient
+})
+
+
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/form" element={<SForm />} />
-        <Route path="/addform" element={<AForm />} />
-        <Route path="/withdraw" element={<WForm />} />
-      </Routes>
-    </BrowserRouter>
+    <WagmiConfig config={wagmiConfig}>
+      <RainbowKitProvider chains={chains}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/form" element={<SForm />} />
+          <Route path="/addform" element={<AForm />} />
+          <Route path="/withdraw" element={<WForm />} />
+        </Routes>
+      </BrowserRouter>
+    </RainbowKitProvider>
+    </WagmiConfig>
   );
 }
 
