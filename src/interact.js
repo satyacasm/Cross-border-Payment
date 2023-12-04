@@ -13,6 +13,7 @@ async function main() {
 
 async function balance(){
   const balance = await contract.balanceOf();
+  console.log("balance1 "+balance);
   return balance;
 }
 

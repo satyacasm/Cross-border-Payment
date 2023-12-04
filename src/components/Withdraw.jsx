@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import img from '../images/add-money.webp';
-import { transfer } from '../interact';
+import { withdrawal } from '../interact';
 import image from '../images/crosspay-high-resolution-logo-transparent.png';
 
 const Withdraw = () => {
@@ -60,7 +60,7 @@ const Withdraw = () => {
                 <button
                   className="bg-[#bd73be] hover:bg-[#D298D3] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                   type="button"
-                  onClick={() => transfer(metamaskAddress, amount)}
+                  onClick={() => withdrawal( amount)}
                 >
                   Withdraw
                 </button>
