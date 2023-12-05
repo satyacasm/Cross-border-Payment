@@ -8,9 +8,14 @@ import image from '../images/crosspay-high-resolution-logo-transparent.png';
 const Withdraw = () => {
   const [amount, setAmount] = useState('');
   const [metamaskAddress, setMetamaskAddress] = useState('');
+  const [loading, setLoading] = useState(false); // Add loading state
   const navigate = useNavigate();
   const handleClick = () => navigate('/dashboard');
-
+  const handleWithdraw = async () => {
+    setLoading(true); // Set loading to true when transfer starts
+    await withdrawal(amount); // Assume transfer is a promise
+    setLoading(false); // Set loading to false when transfer ends
+  };
   return (
     <>
       <div className="flex flex-col items-center justify-center min-h-screen ">
@@ -60,9 +65,9 @@ const Withdraw = () => {
                 <button
                   className="bg-[#bd73be] hover:bg-[#D298D3] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                   type="button"
-                  onClick={() => withdrawal( amount)}
+                  onClick={handleWithdraw}
                 >
-                  Withdraw
+                  {loading ? 'Loading...' : 'Withdraw'}
                 </button>
                 <h1
                   className="text-black text-bold text-md items-center justify-center mt-3  hover:text-[#D298D3]"

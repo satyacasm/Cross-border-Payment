@@ -1,15 +1,15 @@
 import {ethers} from "ethers";
+import { useAccount, useConnect, useDisconnect } from 'wagmi';
 const {abi} = require("./contracts/basicABI.json");
+
+
+// const { address, isConnected } = useAccount();
 
 const provider = new ethers.BrowserProvider(window.ethereum)
 await provider.send("eth_requestAccounts",[]);
 const signer  = await provider.getSigner();
 const contract = new ethers.Contract(process.env.REACT_APP_CONTRACT_ADDRESS,abi,signer);
-async function main() {
-  
-  console.log("balance is "+await contract.balanceOf());
- 
-}
+
 
 async function balance(){
   const balance = await contract.balanceOf();
@@ -61,4 +61,4 @@ async function findBalance(addr){
   return findBalance;
 }
 
-export {main,balance,deposit,withdrawal,transfer,getAllTransactions,findBalance};
+export {balance,deposit,withdrawal,transfer,getAllTransactions,findBalance};
