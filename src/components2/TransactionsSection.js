@@ -1,72 +1,71 @@
-// TransactionsSection.js
-// import React from "react";
+import React, { useState, useEffect } from 'react';
 import "./TransactionsSection.css";
 import { getAllTransactions } from "../interact";
-import React, { useState, useEffect } from 'react';
 
 const TransactionsSection = (props) => { 
-  const [transactions, setTransactions] = useState([]);
-  const addr = props.address;
-  // console.log(addr);
-  useEffect(() => {
-    const fetchTransactions = async () => {
-      try {
-        const transactionsData = await getAllTransactions();
-        // console.log("Transactions => ", transactionsData);
-        setTransactions(transactionsData);
-      } catch (error) {
-        console.error("Error fetching transactions:", error);
-      }
-    };
+ const [transactions, setTransactions] = useState([]);
+ const [currentPage, setCurrentPage] = useState(1);
+ const itemsPerPage = 10;
+ const addr = props.address;
 
-    fetchTransactions();
-  }, []); // Empty dependency array ensures the effect runs only once
-  var filteredTransactions;
-  if(addr)
-  filteredTransactions = transactions.filter(transaction => transaction.from.toLowerCase() === addr.toLowerCase() || transaction.to.toLowerCase() === addr.toLowerCase());
-  console.log(filteredTransactions);
-  // console.log(JSON.stringify(addr))
-  // console.log(JSON.stringify(transactions[0]))
+ useEffect(() => {
+   const fetchTransactions = async () => {
+     try {
+       const transactionsData = await getAllTransactions();
+       setTransactions(transactionsData);
+     } catch (error) {
+       console.error("Error fetching transactions:", error);
+     }
+   };
 
-  // transactions.map((transaction) => (
-  //   console.log("Trans => "+transaction[0])
-  // ))
-  if(addr)
-  {return (
-    <div className="transactions-section">
-      <h2 className="transacion_heading">Previous Transactions</h2>
-      <div className="transaction-list">
-        <table className="table table-striped table-dark">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>From</th>      
-              <th>To</th>
-              <th>Amount</th>
-              <th>Charges</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            { filteredTransactions.map((transaction) => (
-              <tr key={transaction.counter}>
+   fetchTransactions();
+ }, []);
+
+ if(addr) {
+   const startIndex = (currentPage - 1) * itemsPerPage;
+   const endIndex = startIndex + itemsPerPage;
+   const filteredTransactions = transactions.filter(transaction => transaction.from.toLowerCase() === addr.toLowerCase() || transaction.to.toLowerCase() === addr.toLowerCase());
+   const currentTransactions = filteredTransactions.slice(startIndex, endIndex);
+
+   const totalPages = Math.ceil(filteredTransactions.length / itemsPerPage);
+
+   return (
+     <div className="transactions-section">
+       <h2 className="transacion_heading">Previous Transactions</h2>
+       <div className="transaction-list">
+         <table className="table table-striped table-dark">
+           <thead>
+             <tr>
+               <th>ID</th>
+               <th>From</th>     
+               <th>To</th>
+               <th>Amount</th>
+               <th>Charges</th>
+               <th>Status</th>
+             </tr>
+           </thead>
+           <tbody>
+             {currentTransactions.map((transaction) => (
+               <tr key={transaction.counter}>
                 <td>{transaction.counter}</td>
                 <td>{transaction.from}</td>
                 <td>{transaction.to}</td>
                 <td>{transaction.amount}</td>
                 <td>{transaction.charges}</td>
                 <td>{transaction.status}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
-    );
-    }
-    else{
-      return;
-    }
+               </tr>
+             ))}
+           </tbody>
+         </table>
+       </div>
+       <button className="pagination-button" onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>Previous</button>
+<button className="pagination-button" onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === totalPages}>Next</button>
+
+     </div>
+   );
+ } else {
+   return null;
+ }
 };
 
 export default TransactionsSection;

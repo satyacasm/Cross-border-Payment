@@ -31,18 +31,21 @@ console.log("User balance "+isLoading+" "+userBalance);
 
   if(!isLoading)
   {
-    const toprint = `Balance is ${userBalance}`;
+    const toprint = `${userBalance} Tokens`;
     console.log("User balance1 "+isLoading+" "+userBalance);
     return (
     <div className="dark-app">
       <Navbar />
       <main>
         <div className="dashBoard_Nav">
-        <h2 className="main_greeting">Welcome User</h2>
+        <h2 className="main_greeting p-1 mb-2">Welcome User</h2>
         <ConnectButton />
    
         </div>
-        <div><h3>{toprint}</h3></div>
+        <div className="bg-gray-800 border border-gray-700 text-gray-100 px-4 py-3 rounded relative" role="alert">
+       <strong className="font-bold p-2">Balance</strong>
+       <span className="block sm:inline p-2">{toprint}</span>
+     </div>
         <PaymentSection address={address}/>
         <TransactionsSection address={address} />
       </main>

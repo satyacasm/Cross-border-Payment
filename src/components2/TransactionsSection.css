@@ -14,7 +14,24 @@ h2 {
 table{
     width: 100%;
 }
-
+.pagination-button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px ;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 4px;
+    cursor: pointer;
+   }
+   
+   .pagination-button:disabled {
+    background-color: #cccccc6f; /* Gray */
+    cursor: not-allowed;
+   }
+   
 .transacion_heading{
     color: white;
 font-size: 30px;
